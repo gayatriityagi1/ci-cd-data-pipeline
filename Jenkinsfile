@@ -1,13 +1,13 @@
 pipeline {
     agent any
 
-    stages {
-        stage('Build') {
-            steps {
-                echo 'Installing dependencies'
-                bat '"C:\\Users\\Dell\\AppData\\Local\\Programs\\Python\\Python315\\python.exe" -m pip install -r requirements.txt'
-            }
-        }
+    stage('Build') {
+    steps {
+        echo 'Installing dependencies'
+        bat '"C:\\Users\\Dell\\AppData\\Local\\Programs\\Python\\Python315\\python.exe" -m pip install --upgrade pip'
+        bat '"C:\\Users\\Dell\\AppData\\Local\\Programs\\Python\\Python315\\python.exe" -m pip install --only-binary=:all: -r requirements.txt'
+    }
+}
 
         stage('Deploy - ETL') {
             steps {
