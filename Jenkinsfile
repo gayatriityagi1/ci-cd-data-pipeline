@@ -4,20 +4,31 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'pip install -r requirements.txt'
+                echo 'Installing dependencies'
+                bat 'pip install -r requirements.txt'
             }
         }
 
         stage('Deploy - ETL') {
             steps {
-                sh 'python etl/etl_pipeline.py'
+                echo 'Running ETL pipeline'
+                bat 'python etl\\etl_pipeline.py'
             }
         }
 
         stage('Visualize') {
             steps {
-                sh 'echo Dashboard refreshed'
+                echo 'Dashboard refreshed'
             }
+        }
+    }
+
+    post {
+        success {
+            echo 'Pipeline executed successfully'
+        }
+        failure {
+            echo 'Pipeline failed'
         }
     }
 }
