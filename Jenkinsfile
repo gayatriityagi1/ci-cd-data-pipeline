@@ -5,14 +5,14 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Installing dependencies'
-                bat 'python -m pip install -r requirements.txt'
+                bat '"C:\\Users\\Dell\\AppData\\Local\\Programs\\Python\\Python315\\python.exe" -m pip install -r requirements.txt'
             }
         }
 
         stage('Deploy - ETL') {
             steps {
                 echo 'Running ETL pipeline'
-                bat 'python etl\\etl_pipeline.py'
+                bat '"C:\\Users\\Dell\\AppData\\Local\\Programs\\Python\\Python315\\python.exe" etl\\etl_pipeline.py'
             }
         }
 
